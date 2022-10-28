@@ -7,7 +7,7 @@ export const NavWrapper = styled(Box)(
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        transition: 'width .4s ease-in-out, background .4s ease-in-out'
+        transition: 'width .4s ease-in-out, background .2s ease-in-out'
     })
 );
 

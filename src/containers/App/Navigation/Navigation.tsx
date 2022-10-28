@@ -66,13 +66,14 @@ const Navigation: React.FC = () => {
             <IconButton
                 onClick={() => setExpand(!expand)}
                 sx={{
-                    background: expand ? '#EBEBEB!important' : '#444444!important',
+                    background: expand ? '' : '#444444!important',
                     color: expand ? '#444444' : '#FFF',
                     borderRadius: '0',
+                    whiteSpace: 'nowrap',
                     p: '20px',
                     mb: '23px',
                     justifyContent: 'space-between',
-                    transition: 'background .4s ease-in-out, color .4s ease-in-out'
+                    transition: expand ? '' : 'background .8s ease-in, color .4s ease-in-out'
                 }}
             >
                 {expand ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
