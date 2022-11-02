@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Typography, Button, Menu, MenuItem, Avatar, Divider, ListItemIcon } from '@mui/material';
+import { Box, Button, Menu, MenuItem, Divider, ListItemIcon } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Logout from '@mui/icons-material/Logout';
 
 import Logo from '../../../components/Logo';
+import { HeaderWrapper, HeaderButtonsWrapper } from './styles';
 
-type Props = {
-    expand: boolean
-}
-
-const Header: React.FC<Props> = ({ expand }) => {
+const Header: React.FC = () => {
 
     const navigate = useNavigate();
 
@@ -25,61 +22,63 @@ const Header: React.FC<Props> = ({ expand }) => {
     };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                width: '100%',
-                height: '64px',
-                pl: {
-                    xs: '74px',
-                    sm: '128px'
-                },
-                borderBottom: '1px solid #EBEBEB',
-                position: 'fixed'
-            }}>
-                <Logo variant="h1" title="Smart5Grid Platform" />
-                <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', mr: '50px' }}>
-                    <Typography color="primary">user@mail.com</Typography>
-                    <Button sx={{ color: '#A8A8A8', ml: '10px', fontSize: '0.75rem' }} onClick={() => navigate('/')}>Logout</Button>
-                </Box>
-                <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+        <HeaderWrapper>
+            <Logo variant="h1" title="Smart5Grid Platform" />
+            <HeaderButtonsWrapper>
+                <Button
+                    variant="text"
+                    sx={{
+                        fontSize: '1rem'
+                    }}
+                    onClick={() => navigate('/user-details')}
+                    disableRipple
+                >
+                    user@mail.com
+                </Button>
+                <Button
+                    variant="text"
+                    sx={{
+                        color: '#A8A8A8',
+                        fontSize: '0.75rem'
+                    }}
+                    onClick={() => navigate('/')}
+                >
+                    Logout
+                </Button>
+            </HeaderButtonsWrapper>
+
+            {/* smaller screens user menu */}
+            <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
                 <Button
                     endIcon={<KeyboardArrowDownIcon />}
                     onClick={handleClick}
                 />
-                    <Menu
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'right',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        <MenuItem
-                            sx={{
-                                color: '#444444'
-                            }}
-                            onClick={() => navigate('/user-details')}
-                        >
-                            user@mail.com
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem sx={{ color: '#A8A8A8' }} onClick={() => navigate('/')}>
-                            <ListItemIcon>
-                                <Logout fontSize="small" />
-                            </ListItemIcon>
-                            Logout
-                        </MenuItem>
-                    </Menu>
+                <Menu
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <MenuItem sx={{ color: '#444' }} onClick={() => navigate('/user-details')}>
+                        user@mail.com
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem sx={{ color: '#A8A8A8' }} onClick={() => navigate('/')}>
+                        <ListItemIcon>
+                            <Logout fontSize="small" />
+                        </ListItemIcon>
+                        Logout
+                    </MenuItem>
+                </Menu>
             </Box>
-        </Box>
+        </HeaderWrapper>
     );
 };
 

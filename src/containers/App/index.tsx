@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <ThemeProvider theme={Theme}>
             <CssBaseline />
             {location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/register' && <Navigation expand={expand} setExpand={setExpand} />}
-            {location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/register' && <Header expand={expand} />}
+            {location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/register' && <Header />}
             <Routes location={location}>
                 <Route path="/" element={<Main />} />
                 {routesArray.map((route: any) => (

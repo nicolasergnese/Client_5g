@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { IconButton, Typography } from '@mui/material';
@@ -62,7 +62,7 @@ const Navigation: React.FC<Props> = ({ expand, setExpand }) => {
             sx={{
                 width: expand ? '260px' : '64px',
                 background: {
-                    xs: expand ? '#EBEBEB' : '#FFF',
+                    xs: expand ? '#EBEBEB' : '',
                     sm: '#EBEBEB'
                 },
                 zIndex: '2'
