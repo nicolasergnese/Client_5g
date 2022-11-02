@@ -14,12 +14,15 @@ import PieChartRoundedIcon from '@mui/icons-material/PieChartRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 
-const Navigation: React.FC = () => {
+type Props = {
+    expand: boolean;
+    setExpand: (expand: boolean) => void
+}
+
+const Navigation: React.FC<Props> = ({ expand, setExpand }) => {
 
     const navigate = useNavigate();
     const location = useLocation();
-
-    const [expand, setExpand] = useState(false);
 
     const buttons = [
         {
@@ -61,7 +64,8 @@ const Navigation: React.FC = () => {
                 background: {
                     xs: expand ? '#EBEBEB' : '#FFF',
                     sm: '#EBEBEB'
-                }
+                },
+                zIndex: '2'
             }}>
             <IconButton
                 onClick={() => setExpand(!expand)}
