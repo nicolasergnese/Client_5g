@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, CardContent, Typography, Stepper, Step, Link, StepConnector } from '@mui/material';
+import { Box, CardContent, Typography, Stepper, Step, Link, StepConnector, SvgIcon } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
@@ -24,6 +24,22 @@ const EventLogsResume: React.FC = () => {
                     }
                 }}
             />
+        )
+    };
+
+    const StepIcon = () => {
+        return (
+            <SvgIcon>
+                <FiberManualRecordIcon />
+            </SvgIcon>
+        )
+    };
+
+    const LastStepIcon = () => {
+        return (
+            <SvgIcon>
+                <FiberManualRecordOutlinedIcon />
+            </SvgIcon>
         )
     }
 
@@ -67,7 +83,7 @@ const EventLogsResume: React.FC = () => {
                                     fill: index === 3 ? '#444' : '#D6D6D6'
                                 }
                             }}
-                            StepIconComponent={FiberManualRecordIcon}
+                            StepIconComponent={StepIcon}
                         >
                             {event.name}
                             <Typography align="right" sx={{ fontSize: '0.875rem', color: '#929292' }}>{event.time}</Typography>
@@ -76,7 +92,7 @@ const EventLogsResume: React.FC = () => {
                     )}
                     <Step>
                         <EventLabels
-                            StepIconComponent={FiberManualRecordOutlinedIcon}
+                            StepIconComponent={LastStepIcon}
                         >
                             <Link onClick={() => navigate('/event-logs')}>
                                 view all
