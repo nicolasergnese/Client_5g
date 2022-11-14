@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Card, CardContent, Typography, SvgIcon } from '@mui/material';
+import { Box,  CardContent, Typography, SvgIcon } from '@mui/material';
 
 import { DashboardCardsWrapper, DashboardCards } from './styles';
 

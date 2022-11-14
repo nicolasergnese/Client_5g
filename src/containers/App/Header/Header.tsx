@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Button, Menu, MenuItem, Divider, ListItemIcon } from '@mui/material';
+import { Box, Button, Menu, MenuItem, Divider} from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Logout from '@mui/icons-material/Logout';
+
 
 import Logo from '../../../components/Logo';
 import { HeaderWrapper, HeaderButtonsWrapper } from './styles';
+import Logoutcomponent from "../../../components/Logout/Logout"
 
 const Header: React.FC = () => {
-
+    console.log("header")
     const navigate = useNavigate();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -35,16 +36,7 @@ const Header: React.FC = () => {
                 >
                     user@mail.com
                 </Button>
-                <Button
-                    variant="text"
-                    sx={{
-                        color: '#A8A8A8',
-                        fontSize: '0.75rem'
-                    }}
-                    onClick={() => navigate('/')}
-                >
-                    Logout
-                </Button>
+                <Logoutcomponent />
             </HeaderButtonsWrapper>
 
             {/* smaller screens user menu */}
@@ -70,11 +62,8 @@ const Header: React.FC = () => {
                         user@mail.com
                     </MenuItem>
                     <Divider />
-                    <MenuItem sx={{ color: '#A8A8A8' }} onClick={() => navigate('/')}>
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
+                    <MenuItem sx={{ color: '#A8A8A8' }} >
+                       <Logoutcomponent />
                     </MenuItem>
                 </Menu>
             </Box>

@@ -29,7 +29,7 @@ export default function Dashboard() {
                     mb: '38px'
                 }}
             />
-            <EventLogsCard />
+         {/* <EventLogsCard /> */}
         </Box>
     );
 };

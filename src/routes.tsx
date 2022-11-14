@@ -1,7 +1,8 @@
 import toArray from 'lodash.toarray';
 import Main from './views/Main/Main';
-import Login from './views/Login/Login';
-import Register from './views/Register/Register';
+import Login from './components/Login/Login';
+import callback from './components/Callbackurl/callbackurl'
+// import Register from './views/Register/Register';
 import Dashboard from './views/Dashboard/Dashboard';
 import UserDetails from './views/UserDetails/UserDetails';
 import NetApps from './views/NetApps/NetApps';
@@ -33,14 +34,22 @@ export const Routes = {
         parentComponent: null,
         exact: false,
     },
-    Register: {
-        key: 'register',
-        name: 'Register',
-        path: '/register',
-        component: Register,
+    CallbackUrl: {
+        key: 'callback',
+        name: 'CallbackUrl',
+        path: '/callbackurl',
+        component: callback,
         parentComponent: null,
         exact: false,
     },
+    // Register: {
+    //     key: 'register',
+    //     name: 'Register',
+    //     path: '/register',
+    //     component: Register,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
     Dashboard: {
         key: 'dashboard',
         name: 'Dashboard',
@@ -57,62 +66,62 @@ export const Routes = {
         parentComponent: null,
         exact: false,
     },
-    NetApps: {
-        key: 'netApps',
-        name: 'NetApps',
-        path: '/netapps',
-        component: NetApps,
-        parentComponent: null,
-        exact: false,
-    },
-    NetAppsDetails: {
-        key: 'netAppsDetails',
-        name: 'NetAppsDetails',
-        path: '/netapps/details',
-        component: NetAppsDetails,
-        parentComponent: null,
-        exact: false,
-    },
-    NetworkServices: {
-        key: 'networkServices',
-        name: 'NetworkServices',
-        path: '/network-services',
-        component: NetworkServices,
-        parentComponent: null,
-        exact: false,
-    },
-    NetworkServicesDetails: {
-        key: 'networkServicesDetails',
-        name: 'NetworkServicesDetails',
-        path: '/network-services/details',
-        component: NetworkServicesDetails,
-        parentComponent: null,
-        exact: false,
-    },
-    Vnfs: {
-        key: 'vnfs',
-        name: 'Vnfs',
-        path: '/vnfs',
-        component: Vnfs,
-        parentComponent: null,
-        exact: false,
-    },
-    Vdus: {
-        key: 'vdus',
-        name: 'Vdus',
-        path: '/vdus',
-        component: Vdus,
-        parentComponent: null,
-        exact: false,
-    },
-    EventLogs: {
-        key: 'eventLogs',
-        name: 'EventLogs',
-        path: '/event-logs',
-        component: EventLogs,
-        parentComponent: null,
-        exact: false,
-    },
+    // NetApps: {
+    //     key: 'netApps',
+    //     name: 'NetApps',
+    //     path: '/netapps',
+    //     component: NetApps,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // NetAppsDetails: {
+    //     key: 'netAppsDetails',
+    //     name: 'NetAppsDetails',
+    //     path: '/netapps/details',
+    //     component: NetAppsDetails,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // NetworkServices: {
+    //     key: 'networkServices',
+    //     name: 'NetworkServices',
+    //     path: '/network-services',
+    //     component: NetworkServices,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // NetworkServicesDetails: {
+    //     key: 'networkServicesDetails',
+    //     name: 'NetworkServicesDetails',
+    //     path: '/network-services/details',
+    //     component: NetworkServicesDetails,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // Vnfs: {
+    //     key: 'vnfs',
+    //     name: 'Vnfs',
+    //     path: '/vnfs',
+    //     component: Vnfs,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // Vdus: {
+    //     key: 'vdus',
+    //     name: 'Vdus',
+    //     path: '/vdus',
+    //     component: Vdus,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
+    // EventLogs: {
+    //     key: 'eventLogs',
+    //     name: 'EventLogs',
+    //     path: '/event-logs',
+    //     component: EventLogs,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
 };
 
 // Maps don't work on object convert it to an array
