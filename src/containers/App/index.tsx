@@ -7,6 +7,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Theme } from '../../style';
 import Navigation from './Navigation/Navigation';
 import Header from './Header/Header';
+import Loginv from '../../views/login/LoginV';
 
 const App: React.FC = () => {
 
@@ -17,10 +18,11 @@ const App: React.FC = () => {
     return (
         <ThemeProvider theme={Theme}>
             <CssBaseline />
-            {location.pathname !== '/' && location.pathname !== '/login' && <Navigation expand={expand} setExpand={setExpand} />}
-            {location.pathname !== '/' && location.pathname !== '/login' && <Header />}
+            {location.pathname !== '/' && location.pathname !== '/loginv' && <Navigation expand={expand} setExpand={setExpand} />}
+            {location.pathname !== '/' && location.pathname !== '/loginv' && <Header />}
             <Routes location={location}>
                 <Route path="/" element={<Main />} />
+                <Route path="/loginv" element={<Loginv />} />
                 {routesArray.map((route: any) => (
                     <Route
                         key={route.key}

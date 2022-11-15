@@ -1,8 +1,23 @@
 import { Box, Divider } from "@mui/material";
 import DashboardCard from "../../components/Dashboard/DashboardCard";
 import EventLogsCard from "../../components/Dashboard/EventLogsCard";
+import RequestService from "../../services/request";
 
 export default function Dashboard() {
+    
+    const load = () => {
+        RequestService.load()
+            .then((response) => {
+                console.log(response)
+                if (response.status !== 200 || response.status !== 201)
+                    console.log(response)
+            })
+            .catch(function (error) {
+                console.log(error);
+                 //props.showError("Username does not exists");
+            });
+    }
+    load()
     return (
         <Box
             sx={{
@@ -29,7 +44,7 @@ export default function Dashboard() {
                     mb: '38px'
                 }}
             />
-         {/* <EventLogsCard /> */}
+            <EventLogsCard />
         </Box>
     );
 };

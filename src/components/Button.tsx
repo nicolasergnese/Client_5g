@@ -11,7 +11,8 @@ const Button: React.FC<{style?: IButton, onClick: any, title: string}> = ({ styl
             color={style && style.color ? style.color : undefined}
             sx={{
                 color: style && style.textColor ? style.textColor : '',
-                background: style && style.background ? style.background : ''
+                background: style && style.background ? style.background : '',
+                margin:"10px"
             }}
         >
             {title}

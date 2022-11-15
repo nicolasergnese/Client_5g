@@ -20,10 +20,10 @@ var config = {
     authority: "https://identity.s5g.gos.y-cloud.eu/auth/realms/s5g",
     client_id: "osr-client",
     client_secret: "QJeD8p7zCosFC5etJJIqIR9YbJL2BeXa",
-    redirect_uri: "http://localhost:8001/callback.html",
+    redirect_uri: "http://localhost:3000/callback.html",
     response_type: "code",
     scope:"openid email profile",
-    post_logout_redirect_uri : "http://localhost:8001/index.html",
+    post_logout_redirect_uri : "http://localhost:3000/index.html",
 };
 var mgr = new Oidc.UserManager(config);
 

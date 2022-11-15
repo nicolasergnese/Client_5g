@@ -1,6 +1,7 @@
 import toArray from 'lodash.toarray';
 import Main from './views/Main/Main';
-import Login from './components/Login/Login';
+
+// import Login from './components/Login/Login';
 import callback from './components/Callbackurl/callbackurl'
 // import Register from './views/Register/Register';
 import Dashboard from './views/Dashboard/Dashboard';
@@ -26,14 +27,14 @@ export const Routes = {
         parentComponent: null,
         exact: false,
     },
-    Login: {
-        key: 'login',
-        name: 'Login',
-        path: '/login',
-        component: Login,
-        parentComponent: null,
-        exact: false,
-    },
+    // Login: {
+    //     key: 'login',
+    //     name: 'Login',
+    //     path: '/login',
+    //     component: Login,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
     CallbackUrl: {
         key: 'callback',
         name: 'CallbackUrl',
