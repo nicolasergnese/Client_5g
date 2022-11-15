@@ -19,7 +19,9 @@ const Header: React.FC = () => {
         data = JSON.parse(sessionStorage.getItem(keys[0])!);
 
     // const email = null || data["profile"]["email"]
-    const email= null || data["profile"]["email"];
+    let email= null 
+    if (data !==null && data["profile"]["email"])
+        email=data["profile"]["email"];
     const navigate = useNavigate();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

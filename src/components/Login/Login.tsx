@@ -31,6 +31,6 @@ export default function Login() {
     return (
         <div>
             <Button onClick={() => void auth.signinRedirect()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login with Oidc" />
-            <Button onClick={() => void redirectTologin()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login with interface" />
+            {/* <Button onClick={() => void redirectTologin()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login with interface" /> */}
         </div>)
 };
