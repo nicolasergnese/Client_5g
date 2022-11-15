@@ -10,7 +10,16 @@ import { HeaderWrapper, HeaderButtonsWrapper } from './styles';
 import Logoutcomponent from "../../../components/Logout/Logout"
 
 const Header: React.FC = () => {
-    console.log("header")
+    //console.log("header")
+    let keys = Object.keys(sessionStorage);
+   // console.log(JSON.parse(sessionStorage.getItem(keys[0])!))
+    let data=null;
+
+    if (keys.length>0)
+        data = JSON.parse(sessionStorage.getItem(keys[0])!);
+
+    // const email = null || data["profile"]["email"]
+    const email= null || data["profile"]["email"];
     const navigate = useNavigate();
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -34,7 +43,7 @@ const Header: React.FC = () => {
                     onClick={() => navigate('/user-details')}
                     disableRipple
                 >
-                    user@mail.com
+                    {email}
                 </Button>
                 <Logoutcomponent />
             </HeaderButtonsWrapper>

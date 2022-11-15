@@ -1,15 +1,18 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { Box, CardContent, Typography, Stepper, Step, Link, StepConnector, SvgIcon } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
-
 import { DashboardCards, EventLabels } from './styles';
-import { events } from './events';
 
-const EventLogsResume: React.FC = () => {
-
+const EventLogsResume = ({eventLogs}) => {
+    console.log(eventLogs);
+    const events = []
+    if (eventLogs && eventLogs.length>0)
+    eventLogs.forEach(element => {
+        events.push({ "name":element.object_type+' "'+element.object_name+'" '+element.action+" with ID "+element.object_id,
+        "time":element.time } )
+    });
+ 
     const navigate = useNavigate();
 
     const Connector = () => {
@@ -76,7 +79,7 @@ const EventLogsResume: React.FC = () => {
                     }}
                 >
                     {events.map((event, index) =>
-                    <Step key={event.name}>
+                    <Step key={index}>
                         <EventLabels
                             sx={{
                                 "& circle": {

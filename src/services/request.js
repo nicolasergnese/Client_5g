@@ -1,7 +1,22 @@
 import axios from 'axios';
 
 //axios.defaults.headers.common['Access-Control-Allow-Origin']='*';
-       // const requestOptions = {
+const API_URL = "https://osr-dev.s5g.gos.y-cloud.eu/";
+
+class RequestService {
+    async loadNetapps() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'netapp/list/',
+            headers:headers
+        }
+        // const requestOptions = {
         //     method: 'GET',
         //     headers: headers,
         //     //redirect: 'follow'
@@ -9,16 +24,13 @@ import axios from 'axios';
         //   console.log(requestOptions);
         //   const response = await fetch('https://osr-dev.s5g.gos.y-cloud.eu/netapp/list/',requestOptions)
         // .then(async response => {
-        //     //const data = await response.json();
-        //     console.log(response.status);
+        //     console.log(response.json());
         //     // check for error response
         //     if (!response.ok) {
         //         // get error message from body or default to response statusText
         //         const error = (data && data.message) || response.statusText;
         //         return Promise.reject(error);
         //     }
-
-            
         //     return response;
         // })
         // .catch(error => {
@@ -27,17 +39,8 @@ import axios from 'axios';
         //     return error
         // }); 
         // return response;
-const API_URL = "https://osr-dev.s5g.gos.y-cloud.eu/";
 
-class RequestService {
-    async load() {
-        let keys = Object.keys(sessionStorage);
-        console.log(sessionStorage.getItem(keys[0]));
-        const data = JSON.parse(sessionStorage.getItem(keys[0]));
-        const token = data["access_token"]
-        const headers = { 'Authorization': "Bearer " + token };
-
-        const response = await axios.get(API_URL + "netapp/list/", { headers: headers }).then(response => {
+        const response = await axios(requestOptions).then(response => {
             //console.log(response);
             return response;
 
@@ -52,7 +55,153 @@ class RequestService {
             }
             return error.response;
         });
-        return response;
+        return await response;
+    };
+    async loadNetworkservices() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'ns/list/',
+            headers:headers
+        }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
+    };
+    async loadVnfs() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'vnf/list/',
+            headers:headers
+        }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
+    };
+    async loadVdus() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'vdu/list/',
+            headers:headers
+        }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
+    };
+    async load() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'netapp/list/',
+            headers:headers
+        }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
+    };
+    async loadEventlogs() {
+        let keys = Object.keys(sessionStorage);
+       // console.log(sessionStorage.getItem(keys[0]));
+        const data = JSON.parse(sessionStorage.getItem(keys[0]));
+       // console.log(data.profile.email)
+        const token = data["access_token"]
+        const headers = { 'Authorization': "Bearer " + token};
+        delete axios.defaults.headers.common["Access-Control-Allow-Origin"];
+        const requestOptions ={
+            method: "get",
+            url:API_URL + 'eventlogs/',
+            headers:headers
+        }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
     };
 }
 
