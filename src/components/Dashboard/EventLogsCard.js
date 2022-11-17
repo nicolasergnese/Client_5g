@@ -53,6 +53,7 @@ const EventLogsResume = ({eventLogs}) => {
             }}
         >
             <Typography
+                color="primary"
                 sx={{
                     fontWeight: 700,
                     maxWidth: '90%',
@@ -89,7 +90,7 @@ const EventLogsResume = ({eventLogs}) => {
                             StepIconComponent={StepIcon}
                         >
                             {event.name}
-                            <Typography align="right" sx={{ fontSize: '0.875rem', color: '#929292' }}>{event.time}</Typography>
+                            <Typography align="right" color="primary" sx={{ fontSize: '0.875rem' }}>{event.time}</Typography>
                         </EventLabels>
                     </Step>
                     )}

@@ -13,29 +13,29 @@ const DashboardCard = ({nNetServ,nNetapps,nVdu,nVnf}) => {
 const cards = [
     {
         name: 'NetApps',
-        background: '#444',
+        background: '#274684',
         color: '#FFF',
         icon: <LocalMallRoundedIcon />,
         value: nNetapps
     },
     {
         name: 'Network Services',
-        background: '#D6D6D6',
-        color: '#444',
+        background: '#b9d5fd',
+        color: '#071739',
         icon: <MonetizationOnRoundedIcon />,
         value: nNetServ
     },
     {
         name: 'VNFs',
-        background: '#929292',
-        color: '#444',
+        background: '#709fdc',
+        color: '#071739',
         icon: <PeopleAltRoundedIcon />,
         value:  nVnf
     },
     {
         name: 'VDUs',
         background: '#FFF',
-        color: '#444',
+        color: '#071739',
         icon: <HowToRegRoundedIcon />,
         value:  nVdu
     }

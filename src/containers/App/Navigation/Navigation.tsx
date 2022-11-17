@@ -5,14 +5,15 @@ import { IconButton, Typography } from '@mui/material';
 
 import { NavWrapper, NavButtonsWrapper } from './styles';
 import Logo from '../../../components/Logo';
+import { ReactComponent as NAIcon } from '../../../assets/icons/NA.svg';
+import { ReactComponent as NSIcon } from '../../../assets/icons/NS.svg';
+import { ReactComponent as VNFIcon } from '../../../assets/icons/VNF.svg';
+import { ReactComponent as VDUIcon } from '../../../assets/icons/VDU.svg';
 
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import FlagRoundedIcon from '@mui/icons-material/FlagRounded';
-import PieChartRoundedIcon from '@mui/icons-material/PieChartRounded';
-import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
-import EventRoundedIcon from '@mui/icons-material/EventRounded';
+import ListRoundedIcon from '@mui/icons-material/ListRounded';
 
 type Props = {
     expand: boolean;
@@ -33,27 +34,27 @@ const Navigation: React.FC<Props> = ({ expand, setExpand }) => {
         {
             title: 'NetApps',
             path: "/netapps",
-            icon: <FlagRoundedIcon />
+            icon: <NAIcon />
         },
         {
             title: 'Network Services',
             path: "/network-services",
-            icon: <PieChartRoundedIcon />
+            icon: <NSIcon />
         },
         {
             title: 'VNFs',
             path: "/vnfs",
-            icon: <EmailRoundedIcon />
+            icon: <VNFIcon />
         },
         {
             title: 'VDUs',
             path: "/vdus",
-            icon: <PieChartRoundedIcon />
+            icon: <VDUIcon />
         },
         {
             title: 'Event Logs',
             path: "/event-logs",
-            icon: <EventRoundedIcon />
+            icon: <ListRoundedIcon />
         }
     ];
 
@@ -62,16 +63,16 @@ const Navigation: React.FC<Props> = ({ expand, setExpand }) => {
             sx={{
                 width: expand ? '260px' : '64px',
                 background: {
-                    xs: expand ? '#EBEBEB' : '',
-                    sm: '#EBEBEB'
+                    xs: expand ? '#b9d5fd' : '',
+                    sm: '#b9d5fd'
                 },
                 zIndex: '2'
             }}>
             <IconButton
                 onClick={() => setExpand(!expand)}
                 sx={{
-                    background: expand ? '' : '#444444!important',
-                    color: expand ? '#444444' : '#FFF',
+                    background: expand ? '' : '#071739!important',
+                    color: expand ? '#071739' : '#FFF',
                     borderRadius: '0',
                     whiteSpace: 'nowrap',
                     p: '20px',

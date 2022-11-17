@@ -7,6 +7,7 @@ const Button: React.FC<{style?: IButton, onClick: any, title: string}> = ({ styl
 
     return (
         <MuiButton
+            fullWidth
             onClick={onClick}
             color={style && style.color ? style.color : undefined}
             sx={{

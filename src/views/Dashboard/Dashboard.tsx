@@ -174,7 +174,7 @@ export default function Dashboard() {
             <Divider
                 sx={{
                     margin: 'auto',
-                    background: '#444',
+                    background: '#071739',
                     width: '80%',
                     mb: '38px'
                 }}

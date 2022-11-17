@@ -3,7 +3,7 @@ import { styled, experimental_sx as sx } from "@mui/system";
 
 export const ButtonsWrapper = styled(Box)(
     sx({
-        background: '#444444',
+        background: '#071739',
         borderRadius: '16px',
         padding: {
             xs: '55px 100px',

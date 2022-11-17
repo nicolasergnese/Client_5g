@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Button from "../Button";
 import { useAuth } from "react-oidc-context";
 import { useNavigate } from 'react-router-dom';
@@ -16,17 +16,17 @@ export default function Login() {
 
     switch (auth.activeNavigator) {
         case "signinSilent":
-            return <div>Signing you in...</div>;
+            return <Typography color="secondary" align="center">Signing you in...</Typography>;
         case "signoutRedirect":
-            return <div>Signing you out...</div>;
+            return <Typography color="secondary" align="center">Signing you out...</Typography>;
     }
 
     if (auth.isLoading) {
-        return <div>Loading...</div>;
+        return <Typography color="secondary" align="center">Loading...</Typography>;
     }
 
     if (auth.error) {
-        return <div>Oops... {auth.error.message}</div>;
+        return <Typography color="secondary" align="center">Oops... {auth.error.message}</Typography>;
     }
     return (
         <div>
