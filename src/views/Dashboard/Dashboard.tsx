@@ -120,31 +120,31 @@ export default function Dashboard() {
         const loadAll = () => {
 
             if (nNetapps === 0) {
-                console.log("loadNetapps")
+                //console.log("loadNetapps")
                 loadNetapps()
              
                 //listCl();
             }
             if (nNetServ === 0) {
-                console.log("loadNetworkservices")
+                //.log("loadNetworkservices")
                 loadNetworkservices()
                 
                 //listCl();
             }
             if (nVnf === 0) {
-                console.log("loadVnfs")
+              //  console.log("loadVnfs")
                 loadVnfs()
                
                 //listCl();
             }
             if (nVdu === 0) {
-                console.log("loadVuds")
+               // console.log("loadVuds")
                 loadVuds()
               
                 //listCl();
             }
             if (Object.keys(eventLogs).length === 0) {
-                console.log("loadEventlogs")
+               // console.log("loadEventlogs")
                 loadEventlogs()
               
                 //listCl();
@@ -153,6 +153,7 @@ export default function Dashboard() {
         loadAll();
        // console.log(values);
     }, [loadNetapps,loadNetworkservices,loadVnfs,loadVuds,loadEventlogs,nNetServ,nNetapps,nVdu,nVnf,eventLogs]);
+    if (auth && auth.user)
     return (
         <Box
             sx={{

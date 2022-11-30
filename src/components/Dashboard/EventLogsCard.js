@@ -5,7 +5,7 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import { DashboardCards, EventLabels } from './styles';
 
 const EventLogsResume = ({eventLogs}) => {
-    console.log(eventLogs);
+    //console.log(eventLogs);
     const events = []
     if (eventLogs && eventLogs.length>0)
     eventLogs.forEach(element => {
