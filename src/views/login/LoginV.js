@@ -18,6 +18,7 @@ import { omit } from 'lodash';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth'
+import { User } from "oidc-client-ts"
 
 
 const Loginv = () => {
@@ -111,18 +112,31 @@ const Loginv = () => {
 				client_id: "osr-client",
 				client_secret: "QJeD8p7zCosFC5etJJIqIR9YbJL2BeXa",
 				scope: "openid email profile",
+				response_type: "code",
+				response_mode: "query",
+				grant_type: "password"
+
 
 			}
 			AuthService.login(payload)
 				.then((response) => {
 					console.log(response)
-					if (response.status !== 200 || response.status !== 201)
+					if (response.status === 200 || response.status === 201) {
 						setValues({
 							...values,
 							successMessage: response.data.message,
 						})
-					sessionStorage.setItem("ACCESS_TOKEN_NAME", response.data.token);
-					redirectToHome();
+						console.log(response.data)
+						User.fromStorageString(JSON.stringify(response.data))
+						
+						redirectToHome();
+					}
+					else{
+						setValues({
+							...values,
+							successMessage: response.data.error,
+						})
+					}
 
 				})
 				.catch(function (error) {

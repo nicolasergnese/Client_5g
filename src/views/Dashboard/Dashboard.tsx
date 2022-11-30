@@ -14,7 +14,7 @@ export default function Dashboard() {
     const [eventLogs, setEventLogs] = useState({})
     //const prevCountRef = useRef(0);
 
-    //console.log(props)
+    console.log(auth)
     const loadNetapps = useCallback(() => {
         RequestService.loadNetapps()
             .then((response) => {

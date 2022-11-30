@@ -14,8 +14,8 @@ const Header: React.FC = () => {
     let keys = Object.keys(sessionStorage);
    // console.log(JSON.parse(sessionStorage.getItem(keys[0])!))
     let data=null;
-
-    if (keys.length>0)
+    console.log(keys)
+    if (keys!==undefined&&keys.length>0)
         data = JSON.parse(sessionStorage.getItem(keys[0])!);
 
     // const email = null || data["profile"]["email"]

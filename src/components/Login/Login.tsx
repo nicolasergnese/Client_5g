@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Login() {
     const auth = useAuth();
     const navigate = useNavigate();
-    
+    console.log(auth)
     const redirectTologin = () => {
 		console.log("redirect")
 
@@ -30,7 +30,7 @@ export default function Login() {
     }
     return (
         <div>
-            <Button onClick={() => void auth.signinRedirect()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login with Oidc" />
+            <Button onClick={() => void auth.signinRedirect()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login" />
             {/* <Button onClick={() => void redirectTologin()} style={{ textColor: '#FFF', background: '#7A7A7A' }} title="Login with interface" /> */}
         </div>)
 };
