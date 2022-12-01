@@ -21,7 +21,7 @@ type Props = {
 }
 
 const Navigation: React.FC<Props> = ({ expand, setExpand }) => {
-
+    console.log("Navigation");
     const navigate = useNavigate();
     const location = useLocation();
 

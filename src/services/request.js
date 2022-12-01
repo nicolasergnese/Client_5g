@@ -227,9 +227,38 @@ class RequestService {
         let headers = { 'Authorization': "Bearer " + token};
         const requestOptions ={
             method: "delete",
-            url:API_URL + 'users/repokeys/delete/'+id,
+            url:API_URL + 'users/repokeys/delete/'+id+'/',
             headers:headers
         }
+        const response = await axios(requestOptions).then(response => {
+            //console.log(response);
+            return response;
+
+        }).catch(error => {
+            //handle error
+            console.log(error);
+            //alert(error.response);
+            if (error.message === "Network Error") {
+                error.response = {}
+                error.response.message = "ERR_NETWORK"
+                error.response.status = 503;
+            }
+            return error.response;
+        });
+        return await response;
+    };
+    async createUserSSH(payload) {
+        let keys = Object.keys(sessionStorage);
+        let data = JSON.parse(sessionStorage.getItem(keys[0]));
+        let token = data["access_token"]
+        let headers = { 'Authorization': "Bearer " + token};
+        const requestOptions ={
+            method: "post",
+            url:API_URL + 'users/repokeys/create/',
+            headers:headers,
+            data:payload
+        }
+        console.log(requestOptions)
         const response = await axios(requestOptions).then(response => {
             //console.log(response);
             return response;

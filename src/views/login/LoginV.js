@@ -7,12 +7,11 @@ import {
 	Paper,
 	TextField,
 	IconButton,
-	InputAdornment,
-	Typography
+	InputAdornment
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { omit } from 'lodash';
 // import { ACCESS_TOKEN_NAME, USERNAME } from '../constants/apiConstants';
 import './login.css';
@@ -22,6 +21,7 @@ import { User } from "oidc-client-ts"
 
 
 const Loginv = () => {
+	console.log("loginv")
 	useEffect(() => {
 
 	}, []);

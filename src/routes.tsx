@@ -17,6 +17,7 @@ import EventLogs from './views/EventLogs/EventLogs';
 // Import page components below here
 // Keep them organized as the routes object
 // Define routes here
+//console.log("route load")
 
 export const Routes = {
     Main: {
@@ -123,6 +124,7 @@ export const Routes = {
         parentComponent: null,
         exact: false,
     },
+    
 };
 
 // Maps don't work on object convert it to an array

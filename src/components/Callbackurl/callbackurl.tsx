@@ -6,13 +6,11 @@ export default function Callbackurl() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        //console.log(auth.isAuthenticated)
+        console.log(auth.isAuthenticated)
         if (auth.isAuthenticated) {
             return navigate('/dashboard')
         }
         
-    }, [auth])
-
-
+    }, [auth,navigate])
 
 };

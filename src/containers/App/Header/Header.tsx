@@ -10,7 +10,7 @@ import { HeaderWrapper, HeaderButtonsWrapper } from './styles';
 import Logoutcomponent from "../../../components/Logout/Logout"
 
 const Header: React.FC = () => {
-    //console.log("header")
+    console.log("header")
     let keys = Object.keys(sessionStorage);
    // console.log(JSON.parse(sessionStorage.getItem(keys[0])!))
     let data=null;

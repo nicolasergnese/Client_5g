@@ -1,13 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Login  from "../Login/Login"
 
 import { ButtonsWrapper } from './styles';
 
 
 const MainButtonsWrapper: React.FC = () => {
-
-    const navigate = useNavigate();
+    //console.log("MainButtonsWrapper");
+    //const navigate = useNavigate();
 
     return (
         <ButtonsWrapper>

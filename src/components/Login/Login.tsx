@@ -1,18 +1,22 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Button from "../Button";
 import { useAuth } from "react-oidc-context";
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+//import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const auth = useAuth();
-    const navigate = useNavigate();
-    console.log(auth)
-    const redirectTologin = () => {
-		console.log("redirect")
+    useEffect(() => {
+        console.log("login")
+        }, [auth])
+  //  const navigate = useNavigate();
+    
+    // const redirectTologin = () => {
+	// 	console.log("redirect")
 
-		navigate('/loginv')
-		//this.props.history.push('/')
-	}
+	// 	navigate('/loginv')
+	// 	//this.props.history.push('/')
+	// }
 
     switch (auth.activeNavigator) {
         case "signinSilent":

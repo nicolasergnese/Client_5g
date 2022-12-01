@@ -1,30 +1,52 @@
-import React, { useState } from 'react';
-
+import  { useState } from 'react';
 import { Dialog, IconButton, DialogContent, DialogActions, Button, Typography, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
 import { ModalTitleWrapper, ModalTextFieldTitle } from './styles';
+import RequestService from "../../services/request";
 
-type Props = {
-    details: any;
-    setDetails: (details: any) => void;
-    openUpload: boolean;
-    setOpenUpload: (openUpload: boolean) => void
-};
+const UploadKeyModal = ({ openUpload, setOpenUpload, parentFunction}) => {
 
-const UploadKeyModal: React.FC<Props> = ({ details, setDetails, openUpload, setOpenUpload }) => {
-
-    const [name, setName] = useState<string>('');
-    const [key, setKey] = useState<string>('');
+    const [name, setName] = useState('');
+    const [key, setKey] = useState('');
     const [isValid, setIsValid] = useState(<></>);
+    const [error, setError] = useState(null)
 
     const handleUploadKey = () => {
         if (name === '' || key === '') {
             setIsValid(<Typography sx={{ color: '#D34747', backgroundColor: 'rgba(247,134,134,.3)', margin: '0 24px 28px', textAlign: 'center' }}>Data must be added in order to submit</Typography>)
         } else {
             setIsValid(<></>);
-            setDetails({...details, sshKeys: [...details.sshKeys, { id: `key${details.sshKeys.length + 1}`, name: name, key: key}]})
-            setOpenUpload(false)
+            let payload ={
+                key_title: name,
+                key:key
+            }
+            RequestService.createUserSSH(payload)
+            .then((response) => {
+                //console.log(response.data.length)
+                //console.log(response.status !== 200 && response.status !== 201)
+                if (response.status !== 200 && response.status !== 201)
+                    console.log(response)
+                else {
+                    console.log(response)
+                    if (response.status === 200)
+                        {
+                            parentFunction();
+                            setOpenUpload(false)
+                        }
+                    else
+                        setError("Errore");
+                    // if (response.data.length > 0)
+                    //     setUser(response.data.length)
+                    // else
+                    //     setnNetapps(-1)
+                    //prevCountRef.current = 1;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                //props.showError("Username does not exists");
+            });
+            
         }
     }
 

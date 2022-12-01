@@ -13,6 +13,7 @@ const UserDetailsCard = () => {
     const [error, setError] = useState(null)
     const [openUpload, setOpenUpload] = useState(false);
     const loadUserDetail = useCallback(() => {
+        console.log("loaduser")
         RequestService.loadUserDetail()
             .then((response) => {
                 //console.log(response.data.length)
@@ -39,44 +40,50 @@ const UserDetailsCard = () => {
     }, [auth])
 
     useEffect(() => {
-        if(user===null)
-        loadUserDetail()
-    }, [loadUserDetail,user]);
+        console.log(user)
+        let mounted = true
+        if (user === null && mounted)
+            loadUserDetail()
+        return () => {
+            mounted = false;
+        }
+    }, [loadUserDetail, user]);
 
     const handleDelete = (e) => {
-        RequestService.deleteSSH(e.id)
-        .then((response) => {
-            //console.log(response.data.length)
-            //console.log(response.status !== 200 && response.status !== 201)
-            console.log(response)
-            if (response.status !== 200 && response.status !== 201)
-                console.log(response)    
-            //auth.signoutRedirect()
-            else {
-                
-                if (response.status===200)
-                    {
-                        setUser({
-                            ...user,
-                            keys: user.keys.filter(key=>key.id!==e.id),
-                        });
-                        console.log(user)
+        console.log(e.field)
+        if (e.field === "delete")
+            RequestService.deleteSSH(e.id)
+                .then((response) => {
+                    //console.log(response.data.length)
+                    //console.log(response.status !== 200 && response.status !== 201)
+                    console.log(response)
+                    if (response.status !== 200 && response.status !== 201)
+                        console.log(response)
+                    //auth.signoutRedirect()
+                    else {
+
+                        if (response.status === 200) {
+                            setUser({
+                                ...user,
+                                keys: user.keys.filter(key => key.id !== e.id),
+                            });
+                            console.log(user)
+                        }
+                        else
+                            setError("Errore");
+                        // if (response.data.length > 0)
+                        //     setUser(response.data.length)
+                        // else
+                        //     setnNetapps(-1)
+                        //prevCountRef.current = 1;
                     }
-                else
-                    setError("Errore");
-                // if (response.data.length > 0)
-                //     setUser(response.data.length)
-                // else
-                //     setnNetapps(-1)
-                //prevCountRef.current = 1;
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-            //props.showError("Username does not exists");
-        });
-       
-        
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    //props.showError("Username does not exists");
+                });
+
+
     };
 
     const columns = [
@@ -93,7 +100,7 @@ const UserDetailsCard = () => {
             flex: 2
         },
         {
-            field: '',
+            field: 'delete',
             flex: .3,
             renderCell: () =>
                 <Link
@@ -135,7 +142,7 @@ const UserDetailsCard = () => {
                                 )
                             }
                         </Box>
-                        {user && (user.keys.length>0)&&(
+                        {user && (user.keys.length > 0) && (
                             <SshKeysTable
                                 rows={user.keys}
                                 onCellClick={handleDelete}
@@ -159,7 +166,7 @@ const UserDetailsCard = () => {
                     </CardContent>
                 </UserDetailsWrapper>
             </Box>
-            {/* <UploadKeyModal details={details} setDetails={setDetails} openUpload={openUpload} setOpenUpload={setOpenUpload} /> */}
+            <UploadKeyModal openUpload={openUpload} setOpenUpload={setOpenUpload} parentFunction={loadUserDetail} />
         </>
     );
 };

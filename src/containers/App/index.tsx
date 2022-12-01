@@ -7,34 +7,42 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Theme } from '../../style';
 import Navigation from './Navigation/Navigation';
 import Header from './Header/Header';
-import Loginv from '../../views/login/LoginV';
+import PrivateRoute from '../../components/Privateroute/PrivateRoute'
+// import Loginv from '../../views/login/LoginV';
 
 const App: React.FC = () => {
 
     const location = useLocation();
 
     const [expand, setExpand] = useState(false);
-
+    const [auth, setAuth] = useState(false);
+    console.log("app")
     return (
         <ThemeProvider theme={Theme}>
             <CssBaseline />
-            {location.pathname !== '/' && location.pathname !== '/loginv' && <Navigation expand={expand} setExpand={setExpand} />}
-            {location.pathname !== '/' && location.pathname !== '/loginv' && <Header />}
+            {auth && <Navigation expand={expand} setExpand={setExpand} />}
+            {auth && <Header />}
             <Routes location={location}>
                 <Route path="/" element={<Main />} />
-                <Route path="/loginv" element={<Loginv />} />
+
+                {/* <Route path="/loginv" element={<Loginv />} /> */}
                 {routesArray.map((route: any) => (
                     <Route
                         key={route.key}
                         path={route.path}
-                        element={route.parentComponent ?
-                            <route.parentComponent>
-                                <route.component />
-                            </route.parentComponent> :
-
-                            <DefaultLayout>
-                                <route.component />
-                            </DefaultLayout>
+                        element={
+                            route.parentComponent ?
+                                <PrivateRoute token={setAuth}>
+                                    <route.parentComponent>
+                                        <route.component />
+                                    </route.parentComponent>
+                                </PrivateRoute>
+                                :
+                                <PrivateRoute token={setAuth}>
+                                    <DefaultLayout>
+                                        <route.component />
+                                    </DefaultLayout>
+                                </PrivateRoute>
                         }
                     />
                 ))}
