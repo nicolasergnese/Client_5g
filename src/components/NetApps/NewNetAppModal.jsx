@@ -10,13 +10,14 @@ const NewNetAppModal = ({ netApps, setNetApps, openCreate, setOpenCreate }) => {
     const [netApp, setNetApp] = useState({
         name: '',
         description: '',
-        visibility: 'public'
+        public: true
     });
     const [isValid, setIsValid] = useState(<></>);
 
     const handleChange = (e, key) => {
         let newNetApp = Object.assign({}, netApp);
         newNetApp[key] = e.target.value;
+        console.log(newNetApp)
         setNetApp(newNetApp)
     };
 
@@ -24,13 +25,14 @@ const NewNetAppModal = ({ netApps, setNetApps, openCreate, setOpenCreate }) => {
         if (netApp.name === '' || netApp.description === '') {
             setIsValid(<Typography sx={{ color: '#D34747', backgroundColor: 'rgba(247,134,134,.3)', margin: '0 24px 28px', textAlign: 'center' }}>Data must be added in order to submit</Typography>)
         } else {
+           // console.log(Boolean(netApp.public))
             setIsValid(<></>);
             setNetApps([{
                 id: netApps.length + 1,
                 name: netApp.name,
                 description: netApp.description,
-                createdDate: new Date().toDateString(),
-                visibility: netApp.visibility,
+                created_at: new Date(),
+                public: netApp.public,
                 descriptorLink: ''}, ...netApps])
             setOpenCreate(false)
         }
@@ -64,11 +66,11 @@ const NewNetAppModal = ({ netApps, setNetApps, openCreate, setOpenCreate }) => {
                 <ModalTextFieldTitle>Visibility</ModalTextFieldTitle>
                 <FormControl fullWidth>
                     <Select
-                        value={netApp.visibility}
-                        onChange={e => handleChange(e, 'visibility')}
+                        value={netApp.public}
+                        onChange={e => handleChange(e, 'public')}
                     >
-                        <MenuItem value="public">Public</MenuItem>
-                        <MenuItem value="private">Private</MenuItem>
+                        <MenuItem value={true}>Public</MenuItem>
+                        <MenuItem value={false}>Private</MenuItem>
                     </Select>
                 </FormControl>
             </DialogContent>

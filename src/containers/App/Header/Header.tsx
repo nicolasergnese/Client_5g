@@ -8,16 +8,20 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Logo from '../../../components/Logo';
 import { HeaderWrapper, HeaderButtonsWrapper } from './styles';
 import Logoutcomponent from "../../../components/Logout/Logout"
+// import { useAuth } from "react-oidc-context";
 
 const Header: React.FC = () => {
+    //const auth = useAuth();
     console.log("header")
     let keys = Object.keys(sessionStorage);
    // console.log(JSON.parse(sessionStorage.getItem(keys[0])!))
     let data=null;
-    console.log(keys)
+    
     if (keys!==undefined&&keys.length>0)
         data = JSON.parse(sessionStorage.getItem(keys[0])!);
-
+    // else
+    //     auth.signoutRedirect()
+      //  console.log(data)
     // const email = null || data["profile"]["email"]
     let email= null 
     if (data !==null && data["profile"]["email"])

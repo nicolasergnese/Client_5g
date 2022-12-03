@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = "https://identity.s5g.gos.y-cloud.eu/auth/realms/s5g/protocol"+"/";
+const API_URL = "https://identity.s5g.gos.y-cloud.eu/auth/realms/s5g/protocol/";
 
 class AuthService {
     async login(data) {

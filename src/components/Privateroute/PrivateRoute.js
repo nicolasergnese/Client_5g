@@ -1,35 +1,24 @@
-import { useEffect } from 'react';
-import { Navigate } from "react-router-dom";
+import { Navigate} from "react-router-dom";
+import { useAuthStatus } from './useAuthStatus'
+import CircularProgress from '@mui/material/CircularProgress'
+
 
 // import { ACCESS_TOKEN_NAME } from '../constants/apiConstants';
-function PrivateRoute({ token, children }) {
-  console.log("privateroute")
-  let auth = false;
-  let keys = Object.keys(sessionStorage) 
-  if (keys === undefined || keys === null || keys.length===0)
-    keys=Object.keys(localStorage)  ;
- // console.log(Object.keys(localStorage));
-  useEffect(() => {
-    //console.log(sessionStorage.getItem("ACCESS_TOKEN_NAME"));
-    if (Object.keys(sessionStorage) === undefined || Object.keys(sessionStorage) === null || Object.keys(sessionStorage).length===0) {
-      token(false)
-    }
-    else {
-      token(true)
-    }
-  }, [token]);
+function PrivateRoute({setAuth, children}) {
 
-  if (keys === undefined || keys === null || keys.length===0) {
-    auth = false;
-  }
-  else {
-    auth = true;
-  }
-  
+  const { loggedIn, checkingStatus } = useAuthStatus({setAuth})
 
-  //console.log(auth,children)
-  return auth ? children : <Navigate to="/" />;
-  
+  if (checkingStatus) {
+    //setAuth(true)
+    return <CircularProgress className='app__modal-loader' />
+  }
+
+  // if(loggedIn)
+  //   setAuth(true);
+  // else
+  //   setAuth(false);
+
+  return loggedIn ? children : <Navigate to='/' />
 }
 
 

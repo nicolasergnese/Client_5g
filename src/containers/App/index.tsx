@@ -8,6 +8,7 @@ import { Theme } from '../../style';
 import Navigation from './Navigation/Navigation';
 import Header from './Header/Header';
 import PrivateRoute from '../../components/Privateroute/PrivateRoute'
+import Callback from '../../components/Callbackurl/callbackurl'
 // import Loginv from '../../views/login/LoginV';
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
             {auth && <Header />}
             <Routes location={location}>
                 <Route path="/" element={<Main />} />
+                <Route path="/callbackurl" element={<Callback />} />
 
                 {/* <Route path="/loginv" element={<Loginv />} /> */}
                 {routesArray.map((route: any) => (
@@ -32,13 +34,13 @@ const App: React.FC = () => {
                         path={route.path}
                         element={
                             route.parentComponent ?
-                                <PrivateRoute token={setAuth}>
+                                <PrivateRoute setAuth={setAuth}>
                                     <route.parentComponent>
                                         <route.component />
                                     </route.parentComponent>
                                 </PrivateRoute>
                                 :
-                                <PrivateRoute token={setAuth}>
+                                <PrivateRoute setAuth={setAuth}>
                                     <DefaultLayout>
                                         <route.component />
                                     </DefaultLayout>

@@ -2,21 +2,27 @@ import { Typography } from "@mui/material";
 import Button from "../Button";
 import { useAuth } from "react-oidc-context";
 import { useEffect } from "react";
-//import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const auth = useAuth();
     useEffect(() => {
         console.log("login")
+        // if(!auth.isAuthenticated)
+        //     {
+        //         localStorage.clear();
+        //         sessionStorage.clear();
+        //         //auth.signoutRedirect();
+        //     }
         }, [auth])
-  //  const navigate = useNavigate();
+//    const navigate = useNavigate();
     
-    // const redirectTologin = () => {
-	// 	console.log("redirect")
+//     const redirectTologin = () => {
+// 		console.log("redirect")
 
-	// 	navigate('/loginv')
-	// 	//this.props.history.push('/')
-	// }
+// 		navigate('/loginv')
+// 		//this.props.history.push('/')
+// 	}
 
     switch (auth.activeNavigator) {
         case "signinSilent":

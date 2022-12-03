@@ -1,8 +1,8 @@
 import toArray from 'lodash.toarray';
-import Main from './views/Main/Main';
+// import Main from './views/Main/Main';
 
 // import Login from './components/Login/Login';
-import callback from './components/Callbackurl/callbackurl'
+// import callback from './components/Callbackurl/callbackurl'
 // import Register from './views/Register/Register';
 import Dashboard from './views/Dashboard/Dashboard';
 import UserDetails from './views/UserDetails/UserDetails';
@@ -20,14 +20,14 @@ import EventLogs from './views/EventLogs/EventLogs';
 //console.log("route load")
 
 export const Routes = {
-    Main: {
-        key: 'main',
-        name: 'Main',
-        path: '/',
-        component: Main,
-        parentComponent: null,
-        exact: false,
-    },
+    // Main: {
+    //     key: 'main',
+    //     name: 'Main',
+    //     path: '/',
+    //     component: Main,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
     // Login: {
     //     key: 'login',
     //     name: 'Login',
@@ -36,14 +36,14 @@ export const Routes = {
     //     parentComponent: null,
     //     exact: false,
     // },
-    CallbackUrl: {
-        key: 'callback',
-        name: 'CallbackUrl',
-        path: '/callbackurl',
-        component: callback,
-        parentComponent: null,
-        exact: false,
-    },
+    // CallbackUrl: {
+    //     key: 'callback',
+    //     name: 'CallbackUrl',
+    //     path: '/callbackurl',
+    //     component: callback,
+    //     parentComponent: null,
+    //     exact: false,
+    // },
     // Register: {
     //     key: 'register',
     //     name: 'Register',
@@ -79,7 +79,7 @@ export const Routes = {
     NetAppsDetails: {
         key: 'netAppsDetails',
         name: 'NetAppsDetails',
-        path: '/netapps/details',
+        path: '/netapps/details/:id',
         component: NetAppsDetails,
         parentComponent: null,
         exact: false,
@@ -124,7 +124,7 @@ export const Routes = {
         parentComponent: null,
         exact: false,
     },
-    
+
 };
 
 // Maps don't work on object convert it to an array
